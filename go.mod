@@ -1,3 +1,3 @@
-module chromo.com/aocutils
+module chromo.com/aocgolang
 
 go 1.17
