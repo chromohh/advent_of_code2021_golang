@@ -27,7 +27,7 @@ func ParseFileToStringArr(path string)([]string, error){
 
 //parse file to int arr
 func ParseFileToIntArr(path string)([]int, error){
-	file, err := os.Create(path)
+	file, err := os.Open(path)
 	if err != nil {
 		log.Fatal("fail", err)
 		return nil, err
