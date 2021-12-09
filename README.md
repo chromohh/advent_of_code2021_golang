@@ -8,7 +8,12 @@ enter desired day path then
 ```
 go run .
 ```
+# Running
 
+Enter desired path with tests (i.e utils) then
+```
+go test .
+```
 ## Contributing
 
 Pull requests are welcome.
