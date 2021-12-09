@@ -1,9 +1,9 @@
 package main
-import(
-	u "chromo.com/aocgolang/utils"
-    "fmt"
+
+import (
+	"fmt"
 	"regexp"
-	"strconv"
+	u "chromo.com/aocgolang/utils"
 )
 
 const PATH = "../day2/input.txt"
@@ -14,7 +14,7 @@ func main() {
 	cordIX, cordY := 0, 0
 	for _, element := range input{
 		s := r.FindString(element)
-		n, _ := strconv.Atoi(s)
+		n := u.StringToInt(s)
 			switch element[:1]{
 		    case "u": cordIX -= n
 		    case "f": cordY += n
@@ -29,7 +29,7 @@ func p2(){
 	a, h, d := 0, 0, 0
 	for _, element := range input{
 		s := r.FindString(element)
-		n, _ := strconv.Atoi(s)
+		n := u.StringToInt(s)
 			switch element[:1]{
 				case "u":
 				a -= n

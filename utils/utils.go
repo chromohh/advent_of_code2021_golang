@@ -4,7 +4,9 @@ import (
 	"bufio"
 	"log"
 	"os"
+	"regexp"
 	"strconv"
+	"strings"
 )
 
 //parse file to strarr
@@ -44,4 +46,57 @@ func ParseFileToIntArr(path string)([]int, error){
 		lines = append(lines, parsedInt)
 	}
 	return lines, err
+}
+
+func ParseFileToByteBuff(path string)([]byte, error){
+	return os.ReadFile(path);
+}
+
+func StringToInt(s string)(int){
+	i, err := strconv.Atoi(s)
+	if err != nil {
+		log.Fatal("CANT PARSE THIS STRING :D")
+	}
+	return i;
+}
+
+func IntToString(s int)(string){
+	i := strconv.Itoa(s)
+	return i;
+}
+
+func StrBinaryToDecimal(i string)(int){
+	output, err := strconv.ParseInt(i, 2, 64)
+	if err != nil {
+		log.Fatal(err)
+	}
+	return int(output)
+}
+
+func StrToIntArr(s string) []int {
+    strs := strings.Split(s, "")
+    res := make([]int, len(strs))
+    for i := range res {
+        res[i], _ = strconv.Atoi(strs[i])
+    }
+    return res
+}
+
+func NumArrToString(s []int)(string){
+	rs := ""
+	for _, v := range s{
+		rs += strconv.Itoa(v)
+	}
+	return rs;
+}
+
+func RemoveRegexMatchStrArr(slice []string, pattern regexp.Regexp) ([]string) {
+	offset := len(slice) - 1;
+	for i := 0; i <= offset; i++ {
+		if pattern.MatchString(slice[i]) {
+			slice = append(slice[:i], slice[i+1:]...)
+			offset--
+		}
+	}
+	return slice
 }
