@@ -1,6 +1,5 @@
 # chromo aoc go
 Learning GO while doing aoc 2021
-[^1]
 
 # Running
 
