@@ -1,0 +1,18 @@
+# aoc_go
+Learning GO
+[^1]
+**
+
+# Running
+
+**
+install golang 3.17
+enter desired day path then
+```
+go run .
+```
+
+## Contributing
+
+Pull requests are welcome.
+
