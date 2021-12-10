@@ -45,7 +45,6 @@ func p2(){
 	iireduced := input
 	runNor, runInv := true, true
 	for i := 0; i < len(input[0]); i++ {
-		fmt.Println("current bit = ", i)
 
 		cache := []string{}
 		cacheb := []string{}
@@ -71,8 +70,6 @@ func p2(){
 			iireduced = cacheb
 		}
 
-		fmt.Println(ireduced)
-		fmt.Println(iireduced)
 		if len(ireduced) == 1 {
 			runNor = false
 		}
@@ -81,8 +78,6 @@ func p2(){
 			runInv = false
 		}
 	}
-	fmt.Println("222", ireduced[0])
-	fmt.Println("111", iireduced[0])
 	fmt.Printf("\n %s %d %s","PART2 ANSWER : ", (u.StrBinaryToDecimal(ireduced[0]) * u.StrBinaryToDecimal(iireduced[0]))," <- ")
 }
 
@@ -99,7 +94,6 @@ func columnBit(p int, input []string, inv bool) rune {
 		println("ii", ii)
 	}
 
-	fmt.Println("io", io, "ii", ii)
 	if io <= ii {
 		if(inv){
 			return '0'
