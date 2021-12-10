@@ -2,8 +2,6 @@ package main
 
 import (
 	"fmt"
-	"regexp"
-
 	"chromo.com/aocgolang/utils"
 	u "chromo.com/aocgolang/utils"
 )
@@ -41,17 +39,75 @@ func main() {
     p2();
 }
 
+//messy, needs cleaning :)
 func p2(){
-	//copy input
-	//loop amnt of bits
-	//loop new input copy
-	//get columnBit
-	//if columnbit = x = append(type, elems)
-	//
+	ireduced := input
+	iireduced := input
+	runNor, runInv := true, true
+	for i := 0; i < len(input[0]); i++ {
+		fmt.Println("current bit = ", i)
 
+		cache := []string{}
+		cacheb := []string{}
+
+		if(runNor){
+		needle := columnBit(i, ireduced, false)
+
+		for _, bits := range ireduced {
+			if bits[i] == byte(needle) {
+				cache = append(cache, bits)
+			}
+			ireduced = cache
+		}
+		}
+
+		if(runInv){
+		needle2 := columnBit(i, iireduced, true)
+			for _, bit := range iireduced {
+				if(bit[i] == byte(needle2)) {
+					cacheb = append(cacheb, bit)
+				}
+			}
+			iireduced = cacheb
+		}
+
+		fmt.Println(ireduced)
+		fmt.Println(iireduced)
+		if len(ireduced) == 1 {
+			runNor = false
+		}
+
+		if len(iireduced) == 1{
+			runInv = false
+		}
+	}
+	fmt.Println("222", ireduced[0])
+	fmt.Println("111", iireduced[0])
+	fmt.Printf("\n %s %d %s","PART2 ANSWER : ", (u.StrBinaryToDecimal(ireduced[0]) * u.StrBinaryToDecimal(iireduced[0]))," <- ")
 }
 
-func columnBit(pos int, input []string){
-	//string[index] ?
-	//otherwise byte buff
+func columnBit(p int, input []string, inv bool) rune {
+	io := 0
+	ii := 0
+
+	for _, s := range input {
+		if s[p] == '1'{
+			ii++
+		}else {
+			io++
+		}
+		println("ii", ii)
+	}
+
+	fmt.Println("io", io, "ii", ii)
+	if io <= ii {
+		if(inv){
+			return '0'
+		}
+		return '1'
+	}
+	if(inv){
+		return '1'
+	}
+	return '0'
 }
